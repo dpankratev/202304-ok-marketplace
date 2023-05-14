@@ -1,22 +1,22 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
-    kotlin("jvm") version "1.8.20"
+    kotlin("jvm")
 }
 
-group = "ru.otus"
-version = "1.0-SNAPSHOT"
+allprojects {
+    group = "ru.otus"
+    version = "1.0-SNAPSHOT"
 
-repositories {
-    mavenCentral()
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+    }
 }
 
-dependencies {
-    testImplementation(kotlin("test"))
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-
-kotlin {
-    jvmToolchain(11)
+subprojects {
+    tasks.withType<KotlinCompile> {
+        kotlinOptions.jvmTarget = "17"
+    }
 }
