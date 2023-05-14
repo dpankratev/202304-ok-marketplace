@@ -48,6 +48,9 @@ jobs:
       - name: Install curl-dev
         run: sudo apt-get update && sudo apt-get install -y libcurl4-openssl-dev
 
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
       - name: Run Tests
         uses: gradle/gradle-build-action@v2
         with:
